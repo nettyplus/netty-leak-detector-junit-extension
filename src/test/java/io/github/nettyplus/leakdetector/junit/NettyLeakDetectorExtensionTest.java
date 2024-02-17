@@ -2,6 +2,7 @@ package io.github.nettyplus.leakdetector.junit;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import io.netty.util.ResourceLeakDetector;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,6 +26,8 @@ public class NettyLeakDetectorExtensionTest {
 
     @AfterAll
     static void verifyAfterAll() {
+        assertTrue(ResourceLeakDetector.isEnabled());
+        assertEquals(ResourceLeakDetector.Level.PARANOID, ResourceLeakDetector.getLevel());
         assertEquals("paranoid", System.getProperty( "io.netty.leakDetection.level"));
         NettyLeakListener listener = NettyLeakDetectorExtension.getLeakListener();
         assertNotNull(listener);
