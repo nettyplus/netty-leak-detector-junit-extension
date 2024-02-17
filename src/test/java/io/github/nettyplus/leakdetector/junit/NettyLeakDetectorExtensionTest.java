@@ -5,6 +5,7 @@ import io.netty.buffer.ByteBufAllocator;
 import io.netty.util.ResourceLeakDetector;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,8 +17,8 @@ public class NettyLeakDetectorExtensionTest {
     @Test
     void allocateByteBuf() {
         leakListener.assertZeroLeaks();
-        for (int i = 0; i < 1000; i++) {
-            ByteBuf buf = ByteBufAllocator.DEFAULT.buffer(500);
+        for (int i = 0; i < 200000; i++) {
+            ByteBuf buf = ByteBufAllocator.DEFAULT.buffer(128);
             buf.ensureWritable(10);
             assertEquals(1, buf.refCnt());
         }
@@ -28,6 +29,6 @@ public class NettyLeakDetectorExtensionTest {
         assertTrue(ResourceLeakDetector.isEnabled());
         assertEquals(ResourceLeakDetector.Level.PARANOID, ResourceLeakDetector.getLevel());
         assertEquals("paranoid", System.getProperty( "io.netty.leakDetection.level"));
-        // TODO assertTrue(leakListener.getLeakCount() > 0);
+        assertTrue(leakListener.getLeakCount() > 0);
     }
 }
