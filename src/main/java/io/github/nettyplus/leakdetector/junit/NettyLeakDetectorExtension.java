@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
-public class NettyParanoidLeakExtension
+public class NettyLeakDetectorExtension
     implements BeforeAllCallback, BeforeEachCallback, AfterEachCallback, AfterAllCallback {
 
     private static final NettyLeakListener leakListener;

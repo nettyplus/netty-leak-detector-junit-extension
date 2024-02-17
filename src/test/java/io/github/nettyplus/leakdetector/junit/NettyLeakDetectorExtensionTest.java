@@ -2,7 +2,6 @@ package io.github.nettyplus.leakdetector.junit;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
-import io.netty.buffer.ByteBufUtil;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ExtendWith(NettyParanoidLeakExtension.class)
-public class NettyParanoidLeakExtensionTest {
+@ExtendWith(NettyLeakDetectorExtension.class)
+public class NettyLeakDetectorExtensionTest {
     @Test
     void verifyLeakDetection() {
         for (int i = 0; i < 100; i++) {
@@ -27,7 +26,7 @@ public class NettyParanoidLeakExtensionTest {
     @AfterAll
     static void verifyAfterAll() {
         assertEquals("paranoid", System.getProperty( "io.netty.leakDetection.level"));
-        NettyLeakListener listener = NettyParanoidLeakExtension.getLeakListener();
+        NettyLeakListener listener = NettyLeakDetectorExtension.getLeakListener();
         assertNotNull(listener);
         assertTrue(listener.getLeakCount() >= 0);
     }
