@@ -21,4 +21,9 @@ public class NettyLeakListener implements LeakListener {
             throw new IllegalStateException("Netty leaks: " + leaks);
         }
     }
+
+    @Override
+    public String toString() {
+        return "leakCount=" + this.getLeakCount();
+    }
 }
