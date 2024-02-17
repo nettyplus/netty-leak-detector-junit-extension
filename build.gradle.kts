@@ -1,9 +1,26 @@
-plugins {
-    `java-library`
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath("org.shipkit:shipkit-changelog:2.0.1")
+        classpath("org.shipkit:shipkit-auto-version:2.0.4")
+        classpath("com.gradleup.nmcp:nmcp:0.0.4")
+    }
 }
 
+plugins {
+    java
+    `java-library`
+    `maven-publish`
+    id("com.gradleup.nmcp").version("0.0.4")
+}
+
+apply(from="gradle/java-publication.gradle.kts")
+apply(from="gradle/shipkit.gradle.kts")
+
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
@@ -25,4 +42,16 @@ java {
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
+    failFast = true
+    maxParallelForks = 1
+}
+
+nmcp {
+    if (System.getenv("NEXUS_TOKEN_PWD") != null) {
+        publish("mavenJava") {
+            username = System.getenv("NEXUS_TOKEN_USER")
+            password = System.getenv("NEXUS_TOKEN_PWD")
+            publicationType = "AUTOMATIC"
+        }
+    }
 }
