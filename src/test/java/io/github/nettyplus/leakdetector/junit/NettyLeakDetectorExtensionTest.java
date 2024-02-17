@@ -4,19 +4,22 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.util.ResourceLeakDetector;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NettyLeakDetectorExtensionTest {
-    private final NettyLeakDetectorExtension extension = new NettyLeakDetectorExtension();
     static private final NettyLeakListener leakListener = NettyLeakDetectorExtension.getLeakListener();
+
+    @BeforeAll
+    static void beforeAllTests() {
+        leakListener.assertZeroLeaks();
+    }
 
     @Test
     void allocateByteBuf() {
-        leakListener.assertZeroLeaks();
         for (int i = 0; i < 200000; i++) {
             ByteBuf buf = ByteBufAllocator.DEFAULT.buffer(128);
             buf.ensureWritable(10);
