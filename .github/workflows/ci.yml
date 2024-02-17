@@ -75,8 +75,7 @@ jobs:
           && github.repository == 'nettyplus/netty-leak-detector-junit-extension'
           && !contains(toJSON(github.event.commits.*.message), '[skip release]')
 
-        run: echo Hello
-        # run: ./gradlew clean build publishAllPublicationsToCentralPortal --stacktrace
+        run: ./gradlew clean build publishAllPublicationsToCentralPortal --stacktrace
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NEXUS_TOKEN_USER: ${{secrets.NEXUS_TOKEN_USER}}
