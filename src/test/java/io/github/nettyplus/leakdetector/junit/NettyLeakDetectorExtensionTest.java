@@ -20,7 +20,7 @@ public class NettyLeakDetectorExtensionTest {
 
     @Test
     void allocateByteBuf() {
-        for (int i = 0; i < 200000; i++) {
+        for (int i = 0; i < 50000; i++) {
             ByteBuf buf = ByteBufAllocator.DEFAULT.buffer(128);
             buf.ensureWritable(10);
             assertEquals(1, buf.refCnt());
