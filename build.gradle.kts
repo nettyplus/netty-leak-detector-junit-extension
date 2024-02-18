@@ -20,6 +20,10 @@ plugins {
 apply(from="gradle/java-publication.gradle.kts")
 apply(from="gradle/shipkit.gradle.kts")
 
+group = "io.github.nettyplus"
+description = "netty-leak-detector-junit-extension"
+version = "0.0.1-SNAPSHOT"
+
 repositories {
     mavenCentral()
 }
