@@ -44,4 +44,13 @@ public class NettyLeakDetectorExtension
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
         leakListener.assertZeroLeaks();
     }
+
+    @Override
+    public String toString() {
+        if (null == leakListener) {
+            return super.toString();
+        } else {
+            return this.getClass().getSimpleName() + ": leakCount=" + leakListener.getLeakCount();
+        }
+    }
 }
