@@ -1,5 +1,7 @@
 # netty-leak-detector-junit-extension
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.nettyplus/netty-leak-detector-junit-extension.svg)](https://search.maven.org/artifact/io.github.nettyplus/netty-leak-detector-junit-extension)
+
 # Java example
 
 ```java
