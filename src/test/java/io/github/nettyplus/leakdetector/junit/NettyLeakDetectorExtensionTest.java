@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NettyLeakDetectorExtensionTest {
@@ -33,5 +34,8 @@ public class NettyLeakDetectorExtensionTest {
         assertEquals(ResourceLeakDetector.Level.PARANOID, ResourceLeakDetector.getLevel());
         assertEquals("paranoid", System.getProperty( "io.netty.leakDetection.level"));
         assertTrue(leakListener.getLeakCount() > 0);
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> leakListener.assertZeroLeaks());
+        assertTrue(e.getMessage().startsWith("Netty leaks"));
+        assertTrue(e.getMessage().contains("[ByteBuf"));
     }
 }
