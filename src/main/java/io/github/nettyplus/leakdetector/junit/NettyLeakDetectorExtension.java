@@ -37,7 +37,7 @@ public class NettyLeakDetectorExtension
 
     @Override
     public void afterEach(ExtensionContext extensionContext) throws Exception {
-        leakListener.assertZeroLeaks();
+        leakListener.assertZeroLeaks("after [" + extensionContext.getDisplayName() + "]");
     }
 
     @Override

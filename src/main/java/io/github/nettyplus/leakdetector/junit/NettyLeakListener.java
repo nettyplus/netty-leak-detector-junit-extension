@@ -17,8 +17,18 @@ public class NettyLeakListener implements LeakListener {
     }
 
     public void assertZeroLeaks() {
+        assertZeroLeaks(null);
+    }
+
+    public void assertZeroLeaks(String detail) {
         if (!leaks.isEmpty()) {
-            throw new IllegalStateException("Netty leaks: " + leaks);
+            StringBuilder message = new StringBuilder("Netty leaks: ");
+            if (detail != null) {
+                message.append(detail);
+                message.append(" ");
+            }
+            message.append(leaks);
+            throw new IllegalStateException(message.toString());
         }
     }
 
