@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(NettyLeakDetectorExtension.class)
-public class FooTest {
+class FooTest {
   @Test
   void testSomething() {
     // ...
