@@ -21,28 +21,52 @@ public class NettyLeakDetectorExtension
         ByteBufUtil.setLeakListener(leakListener);
     }
 
+    private final boolean beforeEach;
+    private final boolean beforeAll;
+    private final boolean afterEach;
+    private final boolean afterAll;
+
     static NettyLeakListener getLeakListener() {
         return leakListener;
     }
 
+    public NettyLeakDetectorExtension() {
+        this(true, true, true, true);
+    }
+
+    public NettyLeakDetectorExtension(boolean beforeEach, boolean beforeAll, boolean afterEach, boolean afterAll) {
+        this.beforeEach = beforeEach;
+        this.beforeAll = beforeAll;
+        this.afterEach = afterEach;
+        this.afterAll = afterAll;
+    }
+
     @Override
     public void beforeAll(ExtensionContext extensionContext) throws Exception {
-        leakListener.assertZeroLeaks();
+        if (this.beforeAll) {
+            leakListener.assertZeroLeaks();
+        }
     }
 
     @Override
     public void afterAll(ExtensionContext extensionContext) throws Exception {
-        leakListener.assertZeroLeaks();
+        if (this.afterAll) {
+            leakListener.assertZeroLeaks();
+        }
     }
 
     @Override
     public void afterEach(ExtensionContext extensionContext) throws Exception {
-        leakListener.assertZeroLeaks("after [" + extensionContext.getDisplayName() + "]");
+        if (this.afterEach) {
+            leakListener.assertZeroLeaks("after [" + extensionContext.getDisplayName() + "]");
+        }
     }
 
     @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
-        leakListener.assertZeroLeaks();
+        if (this.beforeEach) {
+            leakListener.assertZeroLeaks();
+        }
     }
 
     @Override
