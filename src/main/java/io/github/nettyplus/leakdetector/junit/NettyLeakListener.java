@@ -32,6 +32,10 @@ public class NettyLeakListener implements LeakListener {
         }
     }
 
+    public void reset() {
+        this.leaks.clear();
+    }
+
     @Override
     public String toString() {
         return "leakCount=" + this.getLeakCount();

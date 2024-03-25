@@ -78,6 +78,10 @@ public class NettyLeakDetectorExtension
         }
     }
 
+    public void reset() {
+        leakListener.reset();
+    }
+
     @Override
     public String toString() {
         if (null == leakListener) {
