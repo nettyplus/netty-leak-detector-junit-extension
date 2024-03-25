@@ -1,6 +1,7 @@
 package io.github.nettyplus.leakdetector.junit;
 
 import io.netty.buffer.ByteBufUtil;
+import io.netty.util.ResourceLeakDetector;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
@@ -44,6 +45,7 @@ public class NettyLeakDetectorExtension
     @Override
     public void beforeAll(ExtensionContext extensionContext) throws Exception {
         if (this.beforeAll) {
+            checkResourceLeakDetectorLevel();
             leakListener.assertZeroLeaks();
         }
     }
@@ -51,7 +53,14 @@ public class NettyLeakDetectorExtension
     @Override
     public void afterAll(ExtensionContext extensionContext) throws Exception {
         if (this.afterAll) {
+            checkResourceLeakDetectorLevel();
             leakListener.assertZeroLeaks();
+        }
+    }
+
+    private void checkResourceLeakDetectorLevel() {
+        if (!ResourceLeakDetector.isEnabled()) {
+            throw new IllegalStateException("ResourceLeakDetector is disabled");
         }
     }
 
