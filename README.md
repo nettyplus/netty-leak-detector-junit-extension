@@ -30,6 +30,10 @@ class FooTest {
 
 ```
 
+# Projects that use this library
+
+- [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
+
 ## How to release a new version?
 
 1. Every change on the main development branch is released as `-SNAPSHOT` version to Sonatype snapshot repo
