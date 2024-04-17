@@ -2,7 +2,7 @@
 
 # About this library
 
-This JUnit 5 extension detects resource leaks by registering a Netty [LeakListener](https://netty.io/4.1/api/io/netty/util/ResourceLeakDetector.LeakListener.html)
+This JUnit 5 [extension](https://junit.org/junit5/docs/current/user-guide/#extensions) detects resource leaks by registering a Netty [LeakListener](https://netty.io/4.1/api/io/netty/util/ResourceLeakDetector.LeakListener.html)
 
 # Example: Java unit test
 
