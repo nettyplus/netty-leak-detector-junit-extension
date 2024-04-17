@@ -4,7 +4,7 @@
 
 This JUnit 5 extension detects resource leaks by registering a Netty [LeakListener](https://netty.io/4.1/api/io/netty/util/ResourceLeakDetector.LeakListener.html)
 
-# Usage
+# Example: Java unit test
 
 
 ```java
@@ -23,7 +23,7 @@ class FooTest {
 
 ```
 
-# Maven pom.xml
+# Example: Maven pom.xml
 
 ```
 <dependency>
