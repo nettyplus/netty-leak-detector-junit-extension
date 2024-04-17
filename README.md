@@ -1,6 +1,11 @@
 # netty-leak-detector-junit-extension [![Maven Central](https://img.shields.io/maven-central/v/io.github.nettyplus/netty-leak-detector-junit-extension.svg)](https://search.maven.org/artifact/io.github.nettyplus/netty-leak-detector-junit-extension)
 
-# Java example
+# About this library
+
+This JUnit 5 extension detects resource leaks by registering a Netty [LeakListener](https://netty.io/4.1/api/io/netty/util/ResourceLeakDetector.LeakListener.html)
+
+# Usage
+
 
 ```java
 
@@ -18,7 +23,7 @@ class FooTest {
 
 ```
 
-# Maven usage
+# Maven pom.xml
 
 ```
 <dependency>
