@@ -39,6 +39,11 @@ class FooTest {
 
 - [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
 
+# Presentations
+
+This library was discussed in a [Netty presentation](https://speakerdeck.com/sullis/netty-chicago-java-user-group-2024-04-17) at the Chicago Java User Group.
+
+
 ## How to release a new version?
 
 1. Every change on the main development branch is released as `-SNAPSHOT` version to Sonatype snapshot repo
