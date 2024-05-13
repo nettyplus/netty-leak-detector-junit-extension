@@ -38,6 +38,7 @@ class FooTest {
 # Projects that use this library
 
 - [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
+- [kroxylicious](https://github.com/kroxylicious/kroxylicious)
 
 # Presentations
 
