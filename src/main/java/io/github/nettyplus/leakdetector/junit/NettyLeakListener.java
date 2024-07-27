@@ -1,6 +1,7 @@
 package io.github.nettyplus.leakdetector.junit;
 
 import io.netty.util.ResourceLeakDetector.LeakListener;
+import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -21,6 +22,7 @@ public class NettyLeakListener implements LeakListener {
     }
 
     public void assertZeroLeaks(String detail) {
+        forceGc();
         if (!leaks.isEmpty()) {
             StringBuilder message = new StringBuilder("Netty leaks: ");
             if (detail != null) {
@@ -29,6 +31,18 @@ public class NettyLeakListener implements LeakListener {
             }
             message.append(leaks);
             throw new IllegalStateException(message.toString());
+        }
+    }
+
+    private static void forceGc() {
+        WeakReference<Object> dummy = new WeakReference<>(new Object());
+        while (dummy.get() != null) {
+            System.gc();
+            try {
+                Thread.sleep(250);
+            } catch (InterruptedException e) {
+                // ignore
+            }
         }
     }
 
