@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
     implementation(libs.junit.jupiter.api)
-    implementation(platform("io.netty:netty-bom:4.1.112.Final"))
+    implementation(platform("io.netty:netty-bom:4.1.113.Final"))
     implementation("io.netty:netty-buffer")
     implementation("io.netty:netty-common")
 
