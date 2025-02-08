@@ -7,7 +7,7 @@ updates:
       time: "04:41"
     open-pull-requests-limit: 20
     ignore:
-      - dependency-name: "io.netty"
+      - dependency-name: "io.netty:netty-bom"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
