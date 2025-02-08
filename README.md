@@ -29,7 +29,7 @@ class FooTest {
 <dependency>
     <groupId>io.github.nettyplus</groupId>
     <artifactId>netty-leak-detector-junit-extension</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <scope>test</scope>
 </dependency>
 
