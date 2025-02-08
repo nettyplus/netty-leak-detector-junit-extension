@@ -6,6 +6,8 @@ updates:
       interval: "daily"
       time: "04:41"
     open-pull-requests-limit: 20
+    ignore:
+      - dependency-name: "io.netty"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
