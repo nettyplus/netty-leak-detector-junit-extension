@@ -26,7 +26,7 @@ jobs:
         jdk: [ 'temurin' ]
         os: [ 'ubuntu-22.04' ]
     runs-on: ${{ matrix.os }}
-    name: Java ${{ matrix.java }} ${{ matrix.jdk }}
+    name: Java ${{ matrix.java }} ${{ matrix.os }}
     if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
     steps:
       - name: Check out code
