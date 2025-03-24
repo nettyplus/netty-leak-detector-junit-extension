@@ -43,8 +43,8 @@ class FooTest {
 # Presentations
 
 This library was discussed in the following presentations:
-- 2024: [Netty presentation](https://speakerdeck.com/sullis/netty-chicago-java-user-group-2024-04-17) at the Chicago Java User Group.
-- 2025: [Netty presentation](https://speakerdeck.com/sullis/netty-confoo-montreal-2025-02-27) at ConFoo Montreal
+- 2024: [Chicago Java User Group](https://speakerdeck.com/sullis/netty-chicago-java-user-group-2024-04-17)
+- 2025: [ConFoo Montreal](https://speakerdeck.com/sullis/netty-confoo-montreal-2025-02-27)
 
 
 ## How to release a new version?
