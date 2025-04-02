@@ -8,6 +8,7 @@ updates:
     open-pull-requests-limit: 20
     ignore:
       - dependency-name: "io.netty:netty-bom"
+      - dependency-name: "org.junit.jupiter"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
