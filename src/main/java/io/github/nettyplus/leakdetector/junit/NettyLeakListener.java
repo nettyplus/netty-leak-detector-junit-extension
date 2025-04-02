@@ -34,12 +34,13 @@ public class NettyLeakListener implements LeakListener {
         }
     }
 
-    private static void forceGc() {
+    // visible for testing
+    static void forceGc() {
         WeakReference<Object> dummy = new WeakReference<>(new Object());
         while (dummy.get() != null) {
             System.gc();
             try {
-                Thread.sleep(250);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 // ignore
             }

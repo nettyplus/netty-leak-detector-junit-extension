@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,6 +27,14 @@ public class NettyLeakDetectorExtensionTest {
             buf.ensureWritable(10);
             assertEquals(1, buf.refCnt());
         }
+    }
+
+    @Test
+    void forceGc() {
+        long startTimeMs = System.currentTimeMillis();
+        NettyLeakListener.forceGc();
+        long elapsedTimeMs = (System.currentTimeMillis() - startTimeMs);
+        assertThat(elapsedTimeMs).isLessThan(100);
     }
 
     @AfterAll

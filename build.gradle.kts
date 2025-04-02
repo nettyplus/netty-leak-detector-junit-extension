@@ -35,6 +35,7 @@ dependencies {
     implementation("io.netty:netty-common")
 
     testImplementation(libs.junit.jupiter)
+    testImplementation(libs.assertj)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
