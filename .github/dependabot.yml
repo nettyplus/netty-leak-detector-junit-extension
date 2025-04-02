@@ -9,6 +9,7 @@ updates:
     ignore:
       - dependency-name: "io.netty:netty-bom"
       - dependency-name: "org.junit.jupiter:junit-jupiter"
+      - dependency-name: "org.junit.jupiter:junit-jupiter-api"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
