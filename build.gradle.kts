@@ -6,7 +6,7 @@ buildscript {
     dependencies {
         classpath("org.shipkit:shipkit-changelog:2.0.1")
         classpath("org.shipkit:shipkit-auto-version:2.1.2")
-        classpath("com.gradleup.nmcp:nmcp:0.0.9")
+        classpath("com.gradleup.nmcp:nmcp:0.1.0")
     }
 }
 
@@ -14,7 +14,7 @@ plugins {
     java
     `java-library`
     `maven-publish`
-    id("com.gradleup.nmcp").version("0.0.9")
+    id("com.gradleup.nmcp").version("0.1.0")
 }
 
 apply(from="gradle/java-publication.gradle.kts")
