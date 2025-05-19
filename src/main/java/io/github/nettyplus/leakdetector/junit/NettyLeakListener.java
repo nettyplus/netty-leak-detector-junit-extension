@@ -4,8 +4,11 @@ import io.netty.util.ResourceLeakDetector.LeakListener;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class NettyLeakListener implements LeakListener {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NettyLeakListener.class);
     private final List<String> leaks = new CopyOnWriteArrayList<>();
 
     @Override
@@ -30,6 +33,7 @@ public class NettyLeakListener implements LeakListener {
                 message.append(" ");
             }
             message.append(leaks);
+            LOGGER.error(message.toString());
             throw new IllegalStateException(message.toString());
         }
     }
