@@ -2,19 +2,23 @@ package io.github.nettyplus.leakdetector.junit;
 
 import io.netty.util.ResourceLeakDetector.LeakListener;
 import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class NettyLeakListener implements LeakListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(NettyLeakListener.class);
-    private final List<String> leaks = new CopyOnWriteArrayList<>();
+    private Map<String, List<String>> leaks = Collections.synchronizedMap(new LinkedHashMap<>());
 
     @Override
     public void onLeak(String resourceType, String records) {
         LOGGER.debug("onLeak: resourceType={} records={}", resourceType, records);
-        leaks.add(resourceType);
+        List<String> recordsList = leaks.computeIfAbsent(resourceType, (x) -> new CopyOnWriteArrayList<>());
+        recordsList.add(records);
     }
 
     public int getLeakCount() {
@@ -33,7 +37,17 @@ public class NettyLeakListener implements LeakListener {
                 message.append(detail);
                 message.append(" ");
             }
-            message.append(leaks);
+
+            for (String resourceType: leaks.keySet()) {
+                message.append("{ ");
+                message.append("resourceType=");
+                message.append(resourceType);
+                message.append(", ");
+                message.append("records=");
+                message.append(leaks.get(resourceType));
+                message.append(" } ");
+            }
+
             LOGGER.error(message.toString());
             throw new IllegalStateException(message.toString());
         }

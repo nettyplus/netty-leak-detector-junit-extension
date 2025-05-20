@@ -46,6 +46,6 @@ public class NettyLeakDetectorExtensionTest {
         assertTrue(leakCount > 0);
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> leakListener.assertZeroLeaks());
         assertTrue(e.getMessage().startsWith("Netty leaks"));
-        assertTrue(e.getMessage().contains("[ByteBuf"));
+        assertTrue(e.getMessage().contains("resourceType=ByteBuf, records=["));
     }
 }
