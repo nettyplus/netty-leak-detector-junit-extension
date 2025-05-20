@@ -7,6 +7,7 @@ updates:
       time: "04:42"
     open-pull-requests-limit: 20
     ignore:
+      - dependency-name: "com.gradleup.nmcp:nmcp"
       - dependency-name: "io.netty:netty-bom"
       - dependency-name: "org.junit.jupiter:junit-jupiter"
       - dependency-name: "org.junit.jupiter:junit-jupiter-api"
