@@ -22,7 +22,7 @@ apply(from="gradle/shipkit.gradle.kts")
 
 group = "io.github.nettyplus"
 description = "netty-leak-detector-junit-extension"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
     mavenCentral()
