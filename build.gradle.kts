@@ -33,7 +33,7 @@ dependencies {
     implementation(platform("io.netty:netty-bom:4.1.100.Final"))
     implementation("io.netty:netty-buffer")
     implementation("io.netty:netty-common")
-    implementation("org.slf4j:slf4j-api:1.7.36")
+    implementation("org.slf4j:slf4j-api:2.0.17")
 
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.assertj)
