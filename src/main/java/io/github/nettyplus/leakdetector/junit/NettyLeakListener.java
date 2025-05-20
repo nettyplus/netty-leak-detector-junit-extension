@@ -13,6 +13,7 @@ public class NettyLeakListener implements LeakListener {
 
     @Override
     public void onLeak(String resourceType, String records) {
+        LOGGER.debug("onLeak: resourceType={} records={}", resourceType, records);
         leaks.add(resourceType);
     }
 
