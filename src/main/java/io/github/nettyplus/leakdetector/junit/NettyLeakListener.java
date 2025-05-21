@@ -49,7 +49,7 @@ public class NettyLeakListener implements LeakListener {
             }
 
             LOGGER.error(message.toString());
-            throw new IllegalStateException(message.toString());
+            throw new NettyLeakException(message.toString());
         }
     }
 

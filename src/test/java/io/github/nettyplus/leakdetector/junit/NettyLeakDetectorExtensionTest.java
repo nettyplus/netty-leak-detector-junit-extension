@@ -44,7 +44,7 @@ public class NettyLeakDetectorExtensionTest {
         assertEquals("paranoid", System.getProperty( "io.netty.leakDetection.level"));
         int leakCount = leakListener.getLeakCount();
         assertTrue(leakCount > 0);
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> leakListener.assertZeroLeaks());
+        NettyLeakException e = assertThrows(NettyLeakException.class, () -> leakListener.assertZeroLeaks());
         assertTrue(e.getMessage().startsWith("Netty leaks"));
         assertTrue(e.getMessage().contains("resourceType=ByteBuf, records=["));
     }
