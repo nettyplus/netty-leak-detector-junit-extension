@@ -45,3 +45,6 @@ class FooTest {
 This library was discussed in the following presentations:
 - 2024: [Chicago Java User Group](https://speakerdeck.com/sullis/netty-chicago-java-user-group-2024-04-17)
 - 2025: [ConFoo Montreal](https://speakerdeck.com/sullis/netty-confoo-montreal-2025-02-27)
+
+# Similar work
+- Flink [NettyLeakDetectionExtension](https://github.com/apache/flink/blob/master/flink-runtime/src/test/java/org/apache/flink/runtime/io/network/netty/NettyLeakDetectionExtension.java)
