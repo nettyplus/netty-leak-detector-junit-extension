@@ -47,4 +47,5 @@ This library was discussed in the following presentations:
 - 2025: [ConFoo Montreal](https://speakerdeck.com/sullis/netty-confoo-montreal-2025-02-27)
 
 # Similar work
+- netty [LeakPresenceExtension](https://github.com/netty/netty/pull/15622)
 - Flink [NettyLeakDetectionExtension](https://github.com/apache/flink/blob/master/flink-runtime/src/test/java/org/apache/flink/runtime/io/network/netty/NettyLeakDetectionExtension.java)
