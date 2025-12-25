@@ -44,6 +44,7 @@ class FooTest {
 
 This library was discussed in the following presentations:
 - 2024: [Chicago Java User Group](https://speakerdeck.com/sullis/netty-chicago-java-user-group-2024-04-17)
+- 2025: [Portland Java User Group](https://speakerdeck.com/sullis/netty-portland-java-user-group-2025-02-18)
 - 2025: [ConFoo Montreal](https://speakerdeck.com/sullis/netty-confoo-montreal-2025-02-27)
 
 # Similar work
