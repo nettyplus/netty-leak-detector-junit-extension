@@ -217,7 +217,7 @@ This library was discussed in the following presentations:
 
 Other projects with similar functionality:
 - Netty [LeakPresenceExtension](https://github.com/netty/netty/pull/15622) - Netty's own JUnit extension (in development)
-- Apache Flink [NettyLeakDetectionExtension](https://github.com/apache/flink/tree/master/flink-runtime/src/test/java/org/apache/flink/runtime/io/network/netty) - Flink's internal leak detection for tests
+- Apache Flink [NettyLeakDetectionExtension](https://github.com/apache/flink/tree/master/flink-runtime/src/test/java/org/apache/flink/runtime/io/network/netty) - Internal leak detection for Flink's tests
 
 ## License
 
