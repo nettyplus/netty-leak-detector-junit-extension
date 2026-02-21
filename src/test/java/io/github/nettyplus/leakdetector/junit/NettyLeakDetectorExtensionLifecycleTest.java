@@ -1,5 +1,6 @@
 package io.github.nettyplus.leakdetector.junit;
 
+import io.netty.util.ResourceLeakDetector;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
 import java.util.Collections;
@@ -124,6 +125,32 @@ class NettyLeakDetectorExtensionLifecycleTest {
             ext.afterAll(stubContext("t"));
         } finally {
             ext.reset();
+        }
+    }
+
+    @Test
+    void beforeAllThrowsIllegalStateWhenDetectorDisabled() throws Exception {
+        NettyLeakDetectorExtension ext = new NettyLeakDetectorExtension();
+        ext.reset();
+        ResourceLeakDetector.Level prior = ResourceLeakDetector.getLevel();
+        ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.DISABLED);
+        try {
+            assertThrows(IllegalStateException.class, () -> ext.beforeAll(stubContext("myTest")));
+        } finally {
+            ResourceLeakDetector.setLevel(prior);
+        }
+    }
+
+    @Test
+    void afterAllThrowsIllegalStateWhenDetectorDisabled() throws Exception {
+        NettyLeakDetectorExtension ext = new NettyLeakDetectorExtension();
+        ext.reset();
+        ResourceLeakDetector.Level prior = ResourceLeakDetector.getLevel();
+        ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.DISABLED);
+        try {
+            assertThrows(IllegalStateException.class, () -> ext.afterAll(stubContext("myTest")));
+        } finally {
+            ResourceLeakDetector.setLevel(prior);
         }
     }
 }
