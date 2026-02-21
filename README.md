@@ -168,7 +168,7 @@ System.setProperty("io.netty.leakDetection.level", "advanced");
 ```
 
 Available levels:
-- `DISABLED` - No leak detection (not recommended with this extension)
+- `DISABLED` - No leak detection; causes `beforeAll`/`afterAll` to throw `IllegalStateException`
 - `SIMPLE` - 1% sampling, reports if a leak is found
 - `ADVANCED` - 1% sampling, reports with location info
 - `PARANOID` - 100% sampling (default for this extension)
