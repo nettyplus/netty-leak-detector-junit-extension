@@ -59,7 +59,7 @@ Add the following dependency to your `pom.xml`:
 <dependency>
     <groupId>io.github.nettyplus</groupId>
     <artifactId>netty-leak-detector-junit-extension</artifactId>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
     <scope>test</scope>
 </dependency>
 ```
@@ -69,13 +69,13 @@ Add the following dependency to your `pom.xml`:
 Add the following to your `build.gradle`:
 
 ```groovy
-testImplementation 'io.github.nettyplus:netty-leak-detector-junit-extension:0.2.1'
+testImplementation 'io.github.nettyplus:netty-leak-detector-junit-extension:0.2.2'
 ```
 
 Or in `build.gradle.kts`:
 
 ```kotlin
-testImplementation("io.github.nettyplus:netty-leak-detector-junit-extension:0.2.1")
+testImplementation("io.github.nettyplus:netty-leak-detector-junit-extension:0.2.2")
 ```
 
 ## Usage Examples
