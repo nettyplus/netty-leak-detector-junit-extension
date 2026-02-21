@@ -153,4 +153,30 @@ class NettyLeakDetectorExtensionLifecycleTest {
             ResourceLeakDetector.setLevel(prior);
         }
     }
+
+    @Test
+    void toStringIncludesLeakCount() {
+        NettyLeakDetectorExtension ext = new NettyLeakDetectorExtension();
+        ext.reset();
+        assertTrue(ext.toString().contains("leakCount=0"));
+        NettyLeakDetectorExtension.getLeakListener().onLeak("ByteBuf", "fake-record");
+        try {
+            assertTrue(ext.toString().contains("leakCount=1"));
+        } finally {
+            ext.reset();
+        }
+    }
+
+    @Test
+    void listenerToStringIncludesLeakCount() {
+        NettyLeakListener listener = NettyLeakDetectorExtension.getLeakListener();
+        listener.reset();
+        assertTrue(listener.toString().contains("leakCount=0"));
+        listener.onLeak("ByteBuf", "fake-record");
+        try {
+            assertTrue(listener.toString().contains("leakCount=1"));
+        } finally {
+            listener.reset();
+        }
+    }
 }
