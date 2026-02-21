@@ -89,6 +89,30 @@ class NettyLeakDetectorExtensionLifecycleTest {
     }
 
     @Test
+    void beforeAllThrowsWhenLeaksExist() throws Exception {
+        NettyLeakDetectorExtension ext = new NettyLeakDetectorExtension();
+        ext.reset();
+        NettyLeakDetectorExtension.getLeakListener().onLeak("ByteBuf", "fake-record");
+        try {
+            assertThrows(NettyLeakException.class, () -> ext.beforeAll(stubContext("myTest")));
+        } finally {
+            ext.reset();
+        }
+    }
+
+    @Test
+    void afterAllThrowsWhenLeaksExist() throws Exception {
+        NettyLeakDetectorExtension ext = new NettyLeakDetectorExtension();
+        ext.reset();
+        NettyLeakDetectorExtension.getLeakListener().onLeak("ByteBuf", "fake-record");
+        try {
+            assertThrows(NettyLeakException.class, () -> ext.afterAll(stubContext("myTest")));
+        } finally {
+            ext.reset();
+        }
+    }
+
+    @Test
     void disabledCallbacksDoNotThrowEvenWithLeaks() throws Exception {
         NettyLeakDetectorExtension ext = new NettyLeakDetectorExtension(false, false, false, false);
         NettyLeakDetectorExtension.getLeakListener().onLeak("ByteBuf", "fake-record");
