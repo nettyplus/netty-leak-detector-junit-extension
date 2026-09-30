@@ -26,7 +26,7 @@ A JUnit 5 extension that automatically detects Netty resource leaks in your unit
 
 ## About
 
-This JUnit 5 [extension](https://junit.org/junit5/docs/current/user-guide/#extensions) automatically detects resource leaks by registering a Netty [LeakListener](https://netty.io/4.1/api/io/netty/util/ResourceLeakDetector.LeakListener.html) that monitors all Netty resource allocations and deallocations during test execution.
+This JUnit Jupiter [extension](https://junit.org/junit5/docs/current/user-guide/#extensions) automatically detects resource leaks by registering a Netty [LeakListener](https://netty.io/4.1/api/io/netty/util/ResourceLeakDetector.LeakListener.html) that monitors all Netty resource allocations and deallocations during test execution.
 
 ## Why Use This Library?
 
